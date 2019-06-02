@@ -1,15 +1,16 @@
+import { Aircraft } from "./Aircraft";
+
 export class MyAircraft extends Aircraft {
 
   // インスタンスはstaticにして、一個しか作れないようにしとく
-  private static _instance: Aircraft;
+  private static _instance: MyAircraft;
 
-  public static getInstance(): Aircraft {
+  public static getInstance(): MyAircraft {
     if (!this._instance) {
       this._instance = new MyAircraft(MyAircraft.getInstance);
     }
     return this._instance;
   }
-
 
   constructor(caller: Function) {
     if (caller == MyAircraft.getInstance) {
@@ -22,4 +23,5 @@ export class MyAircraft extends Aircraft {
       throw new Error();
     }
   }
+
 }

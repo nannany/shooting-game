@@ -1,8 +1,8 @@
 import { MyAircraft } from "../domain/aircraft/MyAircraft";
 
-class MyAircraftView {
+export class MyAircraftView {
 
-  myAircraft: MyAircraft;
+  myAircraft: MyAircraft =MyAircraft.getInstance() ;
 
   sprite: PIXI.Sprite;
 
@@ -10,25 +10,24 @@ class MyAircraftView {
   launchInterval: number;
 
   // フレーム数がインクリメントされていく
-  counter: number;
+  counter: number=0;
 
   // 移動速度
   speed: number;
 
-  constructor(myAircraft: MyAircraft, sprite: PIXI.Sprite, launchInterval: number, counter: number, speed: number) {
-    this.myAircraft = MyAircraft.getInstance();
+  constructor( sprite: PIXI.Sprite, launchInterval: number, speed: number) {
     this.sprite = sprite;
     this.launchInterval = launchInterval;
-    this.counter = counter;
     this.speed = speed;
   }
+
+  // todo ビルダー作る。このコンストラクタだけだとどの属性が何番目の引数に当たるか迷う。
 
   moveLeft(): void {
     this.myAircraft.$vx = -1 * this.speed;
   }
 
-  stopLeft(): void {
-    this.myAircraft.$vx = 0;
+  stopLeft(): void { this.myAircraft.$vx = 0;
   }
 
   moveUp(): void {
@@ -62,17 +61,4 @@ class MyAircraftView {
     this.sprite.y = this.myAircraft.$y;
     this.counter++;
   }
-
-  public static class MyAircraftViewBuilder {
-  let myAircraft: MyAircraft = MyAircraft.getInstance();
-  private sprite: PIXI.Sprite;
-  private launchInterval: number;
-  private counter: number;
-   private speed: number;
-
-  MyAircraftViewBuilder
-
-
-    public MyAircraftViewBuilder setInterval
-}
 }

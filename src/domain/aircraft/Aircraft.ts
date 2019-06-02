@@ -1,4 +1,6 @@
-abstract class Aircraft extends Entity {
+import {Entity} from "../Entity";
+
+export abstract class Aircraft extends Entity {
 
   constructor(x: number, y: number, vx: number, vy: number) {
     super(x, y, vx, vy);

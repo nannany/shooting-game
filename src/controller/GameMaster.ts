@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 import KeyboardManager from "../infra/KeyboardManager";
-import {MyAircraft} from "../domain/aircraft/MyAircraft";
+import {MyAircraftView} from "./MyAircraftView";
+import MyAircraftViewFactory from "./factory/MyAircraftViewFactory";
 
 /**
  * ゲームマネージャクラス
@@ -8,10 +9,11 @@ import {MyAircraft} from "../domain/aircraft/MyAircraft";
 export default class GameMaster {
   static createGame(app: PIXI.Application) {
 
-    let ENEMY_BULLET_VIEW: string = 'contents/img/bullet_blue.png';
-    let 
+    const ENEMY_BULLET_IMAGE_PATH: string = 'public/images/bullet_blue.png';
 
-    let myAircraftView: MyAircraftView = new myAircraftView(MyAircraft.getInstance,,0,0,5);
+    const myAircraftViewFactory = new MyAircraftViewFactory(app.stage);
+
+    let myAircraftView: MyAircraftView = myAircraftViewFactory.createMyAircraftView();
 
     let keyboardManager: KeyboardManager = new KeyboardManager();
 

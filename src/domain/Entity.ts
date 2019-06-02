@@ -1,4 +1,4 @@
-class Entity {
+export class Entity {
   private x: number;
 
   private y: number;
